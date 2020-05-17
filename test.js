@@ -4,4 +4,7 @@ function foo() {
 }
 
 
-console.log(foo())
+function doo() {
+    console.log('fuck you!')
+}
+console.log('foo()')
