@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .transition {
+            width: 100px;
+            height: 100px;
+            margin: 20px auto;
+            background: #333;
+            /* border-radius: 0; */
+            /* border-radius是四个属性的简写，所以会导致触发四次transitionend事件 */
+            transition: border-radius ease-in .3s, background ease-in .3s;
+        }
+        .transition:hover {
+            border-radius: 50%;
+            background: #20a0ff;
+        }
+        .overflow {
+            height: 1px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="transition"></div>
+    <button id="btn">点击</button>
+    <div class="overflow">
+        h1 大萨达大萨达啊
+        h1 大萨达大萨达啊
+        h1 大萨达大萨达啊
+        h1 大萨达大萨达啊
+        h1 大萨达大萨达啊
+        h1 大萨达大萨达啊
+    </div>
+
+    <script>
+        const transition = document.getElementsByClassName('transition')[0]
+        const btn = document.getElementById('btn')
+        btn.addEventListener('click', () => {
+        })
+        var flag = false
+        // 多个属性改变，会被触发多次
+        transition.addEventListener('transitionend', () => {
+            setTimeout(() => {
+                if (flag) return
+                flag = true
+                console.log('变化结束了')
+            }, 400)
+        }, false)
+    </script>
+</body>
+</html>

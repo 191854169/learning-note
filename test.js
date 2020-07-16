@@ -1,11 +1,29 @@
-function foo() {
-    console.log('hello Boy!');
+// function foo() {
+//     console.log('hello Boy!');
     
-}
+// }
 
 
+// function doo() {
+//     console.log('fuck you!')
+// }
+// console.log('foo()')
+// console.log('嘻嘻嘻')
+
+'use strict'
+console.log(this)
 function doo() {
-    console.log('fuck you!')
+    const test = () => {
+        console.log(this)
+    }
+    test()
 }
-console.log('foo()')
-console.log('嘻嘻嘻')
+
+function foo() {
+    const test = () => {
+        console.log(this === global)
+    }
+    test()
+}
+doo()
+foo()
