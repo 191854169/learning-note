@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .box {
+        background: #e5edff;
+        /* line-height: 0; */
+    }
+    /* vertical-align: middle; 不能继承 */
+    /* 行高 是由内联元素撑起来的 */
+    .box label {
+        display: inline-block;
+        line-height: 99px;
+        vertical-align: top;
+    }
+    .box img {
+        vertical-align: middle;
+    }
+    .box > span {
+        vertical-align: middle;
+    }
+    .lingxing {
+        /* margin-top: 20%;
+        margin-left: 50%;
+        width: 408px;
+        height: 408px;
+        transform: rotate(45deg);
+        overflow: hidden; */
+        width: 40px;
+        max-height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        /* clip-path: circle(50%); */
+        /* display: inline-block; */
+    }
+    .lingxing > img {
+        /* transform: rotate(-45deg) scale(1.42); */
+    }
+    img {
+        width: 100%;
+        width: 40px;
+        max-height: 100%;
+        /* vertical-align: middle; */
+        /* clip-path: circle(50%); */
+    }
+    .max-min {
+        width: 200px;
+        max-width: 400px;
+        background: hotpink;
+        border: 1px solid gray;
+    }
+    .max-min .internal {
+        width: 600px;
+        height: 12px;
+        max-width: auto;
+        background: greenyellow;
+    }
+    </style>
+</head>
+<body>
+    <!-- <div class="box">
+        <label for="">hello</label>
+        <img src="./01b89493eb9a534789907e9ecd0458b.png" alt="xixi">
+        <span>x</span>
+    </div> -->
+    <div class="lingxing">
+        <img src="./01b89493eb9a534789907e9ecd0458b.png" alt="">
+    </div>
+    <div>cesh</div>
+
+    <div class="max-min">
+        <div class="internal"></div>
+    </div>
+</body>
+</html>

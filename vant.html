@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.8/lib/index.css"/>
+
+    <!-- 引入 Vue 和 Vant 的 JS 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vant@2.8/lib/vant.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <van-button @click="onClick">button</van-button>
+        <van-list :loading="loading" :finished="finished" finished-text="结束了" @load="onLoad">
+            <van-cell>
+                <div v-for="i in res" :key="i">是不是对的?</div>
+            </van-cell>
+        </van-list>
+    </div>
+
+    <script>
+        var instance = new Vue({
+            el: "#app",
+            data: {
+                loading: false,
+                finished: true,
+                res: 0
+            },
+            mounted() {
+                // setTimeout(() => {
+                //     console.log('重新触发load')
+                //     this.finished = false
+                // }, 10000)
+            },
+            methods: {
+                fetch() {
+                    return new Promise((resolve, reject)=> {
+                        setTimeout(() => {
+                            resolve(Math.random() > 0.5 ? 7 : 4)
+                        }, 300)
+                    })
+                },
+                async onLoad() {
+                    console.log('xxxx')
+                    this.loading = true
+                    this.res = await this.fetch()
+                    this.loading  = false
+                    if (this.res === 7) {
+                        this.finished = true
+
+                    }
+                },
+                onClick() {
+                    this.finished = false
+                }
+            }
+        })
+    </script>
+</body>
+</html>
