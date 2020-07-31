@@ -23,11 +23,28 @@
             height: 1px;
             overflow: auto;
         }
+        .parent {
+            display: flex;
+            justify-content: space-between;
+            height: 20px;
+            position: relative;
+        }
+        .child {
+            width: calc(100% / 3);
+            position: relative;
+        }
+        .child:first-child::after {
+            position: absolute;
+            content: '';
+            width: 100%;
+            height: 2px;
+            background: orange;
+        }
     </style>
 </head>
 <body>
     <div class="transition"></div>
-    <button id="btn">点击</button>
+    <!-- <button id="btn">点击</button> -->
     <div class="overflow">
         h1 大萨达大萨达啊
         h1 大萨达大萨达啊
@@ -35,6 +52,11 @@
         h1 大萨达大萨达啊
         h1 大萨达大萨达啊
         h1 大萨达大萨达啊
+    </div>
+    <div class="parent">
+        <div class="child">child1</div>
+        <div class="child">child2</div>
+        <div class="child">child3</div>
     </div>
 
     <script>

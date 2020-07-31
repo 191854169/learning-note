@@ -19,6 +19,7 @@
                 <div v-for="i in res" :key="i">是不是对的?</div>
             </van-cell>
         </van-list>
+        <button @click="onAlertClick">测试alert</button>
     </div>
 
     <script>
@@ -55,6 +56,12 @@
                 },
                 onClick() {
                     this.finished = false
+                },
+
+                onAlertClick() {
+                    vant.Dialog.alert({
+                        message: '测试<br>ssad'
+                    })
                 }
             }
         })
