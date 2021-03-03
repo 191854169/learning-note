@@ -41,7 +41,17 @@
 }
 .content2 {
     display: flex;
-    flex-wrap: wrap-reverse;
+    /* flex-wrap: wrap-reverse; */
+    width: 100px;
+}
+.content2 div {
+    width: 100px;
+    /* flex: 1 0 auto; */
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+.content2 div:nth-of-type(2) {
+    /* width: 40px; */
 }
 
     </style>
@@ -65,5 +75,6 @@
   <div class="green">2</div>
   <div class="blue">3</div>
 </div>
+<div style="margin: 0 auto; height: 100px; background: green;"></div>
 </body>
 </html>

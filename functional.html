@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <functioni-component></functioni-component>
+        <test-component v-model="test"></test-component>
+    </div>
+
+    <script>
+        Vue.component('functioni-component', {
+            functional: true,
+            render(h, context){
+                return h('div',{
+                    on: {
+                        click: [() => {console.log(1)}, () => {console.log(2)}]
+                    }
+                }, '你好吗，我爱的女孩！')
+            }
+        })
+        Vue.component('test-component', {
+            template: '<div>{{value}}</div>',
+            model: {
+                prop: 'value',
+                event: 'test',
+                callback: () => {
+                    console.log('你想干什么')
+                }
+            },
+            props: {
+                value: {
+                    type: String,
+                    default: ''
+                }
+            },
+            mounted() {
+                setTimeout(() => {
+                    this.$emit('test', 'come girl')
+                }, 1000)
+            }
+        })
+        const instance = new Vue({
+            el: '#app',
+            data: {
+                test: 'come baby'
+            },
+            model: {
+                prop: 'value',
+                event: 'test',
+                callback() {
+                    console.log('ff')
+                }
+            },
+            methods: {
+                onTest(e) {
+                    console.log('test', e)
+                },
+                onTestone(e) {
+                    console.log('test1', e)
+                }
+            }
+        })
+    </script>
+
+    <script>
+        var b = 10;
+        function foo() {
+            debugger
+            console.log(foo)
+        }
+        // foo()
+        (function b() {
+            // b = 20;
+            debugger
+            console.log(b)
+        })()
+    </script>
+</body>
+</html>

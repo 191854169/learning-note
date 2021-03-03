@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{ msg }}</p>
+        <button-component @msg="showMsg"></button-component>
+    </div>
+
+    <script>
+        const buttonComponent = Vue.component('button-component', {
+            data() {
+                return {
+                    name: 'Hello'
+                }
+            },
+            render(h) {
+                return h('button', {
+                    on: {
+                        click: () => {
+                            this.$emit('msg', '我的女孩，你能喜欢我么？')
+                        }
+                    }
+                }, [this.name])
+            }
+        })
+        const instance = new Vue({
+            el: '#app',
+            components: {
+                buttonComponent
+            },
+            data() {
+                return {
+                    msg: ''
+                }
+            },
+            methods: {
+                showMsg(e) {
+                    this.msg = e
+                }
+            }
+        })
+    </script>
+</body>
+</html>

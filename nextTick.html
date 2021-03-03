@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$NEXTTICK</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script> -->
+    <script src="./vue.js"></script>
+    <style>
+        .box {
+            display: flex;
+            width: 500px;
+            height: 200px;
+        }
+        .one {
+            flex: 1 1 200px;
+        }
+        .one:nth-of-type(1) {
+            background: red;
+        }
+        .one:nth-of-type(2) {
+            background: yellow;
+        }
+        .one:nth-of-type(3) {
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p>{{ msg }}</p>
+        <div class="box">
+            <div class="one">ONE
+                <div style="width: 400px; height: 200px;"></div>
+            </div>
+            <div class="one">TWO</div>
+            <div class="one">THREE</div>
+            <hello-world v-if="show"></hello-world>
+        </div>
+        <yx-button @click="test"></yx-button>
+    </div>
+
+    <script>
+        const HelloWorld = Vue.component('hello-world', {
+            render(h, content) {
+                return h('div', 'hello world')
+            },
+            beforeDestroy() {
+                console.log(this, 'beforeDestroy')
+            },
+            destroyed() {
+                console.log(this, 'destroyed')
+            }
+        })
+        const YxButton = Vue.component('yx-button',{
+            name: 'yx-button',
+            functional: true,
+            render(h, context) {
+                console.log('fff')
+                return h('button', {
+                    on: {
+                        click: context.listeners.click
+                    }
+                }, 'hello')
+            }
+        })
+        var instance = new Vue({
+            el: '#app',
+            // template: '<div><div class="box"><div class="one"></div><div><yx-button @click="test"></yx-button></div>',
+            components: {
+                YxButton
+            },
+            data: {
+                msg: 'nextTick',
+                show: true
+            },
+            mounted() {
+                this.$nextTick(function() {
+                    console.log(this, this.hello)
+                }, {hello: 'hai'})
+            },
+            methods: {
+                test() {
+                    console.log('test'),
+                    this.show = false
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border: none;
+            outline: none;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+        /* tr {
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            display: flex;
+            padding: 10px 11px 0;
+            background: rgba(19,19,19, 0.03);
+        }
+        tr > th {
+            font-size: 12px;
+            color: rgba(19, 19, 19, 0.45);
+            line-height: 1.2;
+            text-align: right;
+        }
+        th:nth-of-type(1) {
+            text-align: left;
+            flex: 1 1 85px;
+        }
+        th:nth-of-type(2) {
+            flex-grow: 1;
+            flex-shrink: 0;
+            flex-basis: 105px;
+        }
+        th:nth-of-type(3) {
+            flex: 1 1 55px;
+        }
+        th:nth-of-type(4) {
+            flex: 1 1 66px;
+        } */
+        .table_header, .table_content {
+            width: 500px;
+        }
+        table {
+            table-layout: fixed;
+        }
+        table th, table td {
+            text-align: center;
+        }
+        .table_content {
+            height: 100px;
+            overflow-y: auto;
+        }
+        .table-box {
+            position: relative;
+        }
+        .fixed-table {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            overflow: hidden;
+            z-index: 0;
+            background: #20a0ff;
+        }
+        /* .scroll_table_content::-webkit-scrollbar {
+            width: 0;
+        } */
+        .fixed-table .fixed_table_content {
+            overflow: hidden;
+            height: 85px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div>
+        TABLE 布局
+
+        <table>
+            <tbody>
+                <tr>
+                    <th>名称代码</th>
+                    <th>五日最高价/入选价</th>
+                    <th>收益</th>
+                    <th>入选日期</th>
+                </tr>
+                <tr>
+                    <td>康诺熙生物-B</td>
+                    <td>336.444</td>
+                    <td>23.4%</td>
+                    <td>2020.10.22</td>
+                </tr>
+            </tbody>
+        </table>
+    </div> -->
+
+    <div class="table-box">
+        <div class="table_header scroll_header">
+            <table>
+                <colgroup>
+                    <col name="table1" width="100">
+                    <col name="table2" width="110">
+                    <col name="table3" width="120">
+                    <col name="table4" width="130">
+                    <col name="table5" width="140">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>时间</th>
+                        <th>地址</th>
+                        <th>姓名</th>
+                        <th>年龄</th>
+                        <th>身高</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="table_content scroll_table_content">
+            <table>
+                <colgroup>
+                    <col name="table1" width="100">
+                    <col name="table2" width="110">
+                    <col name="table3" width="120">
+                    <col name="table4" width="130">
+                    <col name="table5" width="140">
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <td>2020-11-20</td>
+                        <td>广东省深圳市科兴科学园</td>
+                        <td>陈锋</td>
+                        <td>25</td>
+                        <td>173cm</td>
+                    </tr>
+                    <tr>
+                        <td>2020-11-20</td>
+                        <td>广东省深圳市科兴科学园</td>
+                        <td>陈锋</td>
+                        <td>25</td>
+                        <td>173cm</td>
+                    </tr>
+                    <tr>
+                        <td>2020-11-20</td>
+                        <td>广东省深圳市科兴科学园</td>
+                        <td>陈锋</td>
+                        <td>25</td>
+                        <td>173cm</td>
+                    </tr>
+                    <tr>
+                        <td>2020-11-20</td>
+                        <td>广东省深圳市科兴科学园</td>
+                        <td>陈锋</td>
+                        <td>25</td>
+                        <td>173cm</td>
+                    </tr>
+                    <tr>
+                        <td>2020-11-20</td>
+                        <td>广东省深圳市科兴科学园</td>
+                        <td>陈锋</td>
+                        <td>25</td>
+                        <td>173cm</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="fixed-table">
+            <div class="table_header">
+                <table>
+                    <colgroup>
+                        <col name="table1" width="100">
+                        <col name="table1" width="110">
+                        <col name="table1" width="120">
+                        <col name="table1" width="130">
+                        <col name="table1" width="140">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>时间</th>
+                            <th>地址</th>
+                            <th>姓名</th>
+                            <th>年龄</th>
+                            <th>身高</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="table_content fixed_table_content">
+                <table>
+                    <colgroup>
+                        <col name="table1" width="100">
+                        <col name="table1" width="110">
+                        <col name="table1" width="120">
+                        <col name="table1" width="130">
+                        <col name="table1" width="140">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>2020-11-20</td>
+                            <td>广东省深圳市科兴科学园</td>
+                            <td>陈锋</td>
+                            <td>25</td>
+                            <td>173cm</td>
+                        </tr>
+                        <tr>
+                            <td>2020-11-20</td>
+                            <td>广东省深圳市科兴科学园</td>
+                            <td>陈锋</td>
+                            <td>25</td>
+                            <td>173cm</td>
+                        </tr>
+                        <tr>
+                            <td>2020-11-20</td>
+                            <td>广东省深圳市科兴科学园</td>
+                            <td>陈锋</td>
+                            <td>25</td>
+                            <td>173cm</td>
+                        </tr>
+                        <tr>
+                            <td>2020-11-20</td>
+                            <td>广东省深圳市科兴科学园</td>
+                            <td>陈锋</td>
+                            <td>25</td>
+                            <td>173cm</td>
+                        </tr>
+                        <tr>
+                            <td>2020-11-20</td>
+                            <td>广东省深圳市科兴科学园</td>
+                            <td>陈锋</td>
+                            <td>25</td>
+                            <td>173cm</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function getScrollBarWidth() {
+            const outer = document.createElement('div')
+            outer.style = 'width: 100px; position: absolute; top: -9999px; visibility: hidden;height: 20px;background: #20a0ff;'
+            document.body.appendChild(outer)
+
+            const widthNoScroll = outer.offsetWidth
+            outer.style.overflow = 'scroll'
+            const inner = document.createElement('div')
+            inner.style = 'width: 100%'
+            outer.appendChild(inner)
+
+            const widthWithScroll = inner.offsetWidth
+            return widthNoScroll - widthWithScroll
+        }
+        // const getScrollBarWidth = () => {
+        //     const outer = document.createElement("div");
+        //     outer.style.visibility = "hidden";
+        //     outer.style.width = "100px";
+        //     outer.style.position = "absolute";
+        //     outer.style.top = "-9999px";
+        //     document.body.appendChild(outer);
+        //     //
+        //     const widthNoScroll = outer.offsetWidth;
+        //     outer.style.overflow = "scroll";
+
+        //     const inner = document.createElement("div");
+        //     inner.style.width = "100%";
+        //     outer.appendChild(inner);
+        //     //
+        //     const widthWithScroll = inner.offsetWidth;
+        //     outer.parentNode.removeChild(outer);
+        //     scrollBarWidth = widthNoScroll - widthWithScroll;
+        //     return scrollBarWidth;
+        // }
+        console.log('getScrollBarWidth()===> ', getScrollBarWidth())
+        const scrollBarWidth = getScrollBarWidth()
+        const tableBody = document.getElementsByClassName('scroll_table_content')[0]
+        const tableHeader = document.getElementsByClassName('scroll_header')[0]
+        const fixedTableBody = document.getElementsByClassName('fixed_table_content')[0]
+        const fixedTable = document.getElementsByClassName('fixed-table')[0]
+        tableBody.addEventListener('scroll', (e) => {
+            console.log('e===> ', e.target)
+            console.log('fixedTableBody===> ', fixedTableBody)
+            fixedTableBody.scrollTop = e.target.scrollTop
+            tableHeader.scrollLeft = e.target.scrollLeft
+            fixedTable.style.height = 127 - scrollBarWidth + 'px'
+        })
+    </script>
+</body>
+</html>
+
+
+<script>
+
+function handleFixedMousewheel(event, data) {
+    const bodyWrapper = this.bodyWrapper;
+    if (Math.abs(data.spinY) > 0) {
+        const currentScrollTop = bodyWrapper.scrollTop;
+        if (data.pixelY < 0 && currentScrollTop !== 0) {
+        event.preventDefault();
+        }
+        if (data.pixelY > 0 && bodyWrapper.scrollHeight - bodyWrapper.clientHeight >    ) {
+        event.preventDefault();
+        }
+        bodyWrapper.scrollTop += Math.ceil(data.pixelY / 5);
+    } else {
+        bodyWrapper.scrollLeft += Math.ceil(data.pixelX / 5);
+    }
+}
+
+function move(event){
+　　//当屏幕有多个touch或者页面被缩放过，就不执行move操作
+　　if(event.targetTouches.length > 1 || event.scale && event.scale !== 1) return;
+　　var touch = event.targetTouches[0];
+　　endPos = {x:touch.pageX - startPos.x,y:touch.pageY - startPos.y};
+　　isScrolling = Math.abs(endPos.x) < Math.abs(endPos.y) ? 1:0; // isScrolling为1时，表示纵向滑动，0为横向滑动
+　　if(isScrolling === 0){
+　　　　event.preventDefault(); //阻止触摸事件的默认行为，即阻止滚屏
+　　　　this.slider.className = 'cnt';
+　　　　this.slider.style.left = -this.index*600 + endPos.x + 'px';
+　　}
+}
+</script>

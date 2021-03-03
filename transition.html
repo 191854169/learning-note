@@ -40,6 +40,34 @@
             height: 2px;
             background: orange;
         }
+
+        .like {
+            width: 15px;
+            height: 15px;
+            background: url('./like-gray-1.png') 15px 15px;
+            background-size: cover;
+            margin: 0 auto;
+        }
+        .like:focus {
+            transform: translateX(-10px);
+        }
+        .like-bcg {
+            background-image: url('./like-blue-1.png');
+            animation: like 0.3s ease-out;
+        }
+        .un-like {
+            background-image: url('./like-gray-1.png');
+            animation: like 0.3s ease-out;
+        }
+        @keyframes like {
+            0% {
+                /* background-size: 15px 15px; */
+            }
+
+            100% {
+                transform: scale(1.5);
+            }
+        }
     </style>
 </head>
 <body>
@@ -58,11 +86,12 @@
         <div class="child">child2</div>
         <div class="child">child3</div>
     </div>
+    <div class="like" id="like"></div>
 
     <script>
         const transition = document.getElementsByClassName('transition')[0]
         const btn = document.getElementById('btn')
-        btn.addEventListener('click', () => {
+        btn && btn.addEventListener('click', () => {
         })
         var flag = false
         // 多个属性改变，会被触发多次
@@ -73,6 +102,25 @@
                 console.log('变化结束了')
             }, 400)
         }, false)
+
+        const like = document.getElementById('like')
+        like.addEventListener('click', () => {
+            const className = like.classList
+            if (className.contains('un-like')) {
+                className.remove('un-like')
+                window.requestAnimationFrame(() => {
+                    className.add('like-bcg')
+
+                })
+            } else if (className.contains('like-bcg')) {
+                className.remove('like-bcg')
+                window.requestAnimationFrame(() => {
+                    className.add('un-like')
+                })
+            } else {
+                className.add('like-bcg')
+            }
+        })
     </script>
 </body>
 </html>

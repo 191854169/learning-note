@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box {
+            margin: 200px auto;
+            width: 100px;
+            height: 100px;
+            overflow: hidden;
+            position: relative;
+        }
+        .swipe-list {
+            white-space: nowrap;
+            padding: 0;
+            margin: 0;
+            transition: transform 0.3s ease-in;
+        }
+        .box .left {
+            content: '<';
+            position: absolute;
+            font-size: 18px;
+            text-align: center;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            border-radius: 50%;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            background: yellowgreen;
+            z-index: 1;
+        }
+        .box .right {
+            z-index: 1;
+            content: '>';
+            position: absolute;
+            font-size: 18px;
+            text-align: center;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 10px;
+            background: yellowgreen;
+        }
+        li {
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+            list-style: none;
+        }
+        li img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="left" id="left-btn"><</div>
+        <div class="right" id="right-btn">></div>
+        <ul class="swipe-list">
+        </ul>
+    </div>
+
+    <script>
+        const INIT_IDX = 1
+        let idx = INIT_IDX
+        const imgs = ['./like-blue-1.png', './like-gray-1.png', './pepole-like.png', './11.png']
+        const showImgs = [imgs.slice(-1)[0], ...imgs, imgs[0]]
+        const doms = showImgs.map((src, index) => {
+            const li = document.createElement('li')
+            const img = document.createElement('img')
+            img.src = src
+            img.alt = index
+            li.appendChild(img)
+            return li
+        })
+
+        const ulDom = document.getElementsByTagName('ul')[0]
+
+        doms.forEach(dom => {
+            ulDom.appendChild(dom)
+        })
+
+        ;(function() {
+            animate()
+        })()
+
+        document.getElementById('left-btn').addEventListener('click', function(e) {
+            idx -= 1
+            animate()
+            if (idx === 0) {
+                setTimeout(() => {
+                    idx = showImgs.length - 2
+                    ulDom.style.transitionDuration = '0s'
+                    ulDom.style.transform = `translate(${idx * -100 + 'px'})`
+                }, 400)
+            }
+        })
+
+        document.getElementById('right-btn').addEventListener('click', function(e) {
+            idx += 1
+            animate()
+            if (idx === showImgs.length - 1) {
+                setTimeout(() => {
+                    idx = INIT_IDX
+                    ulDom.style.transitionDuration = '0.01s'
+                    ulDom.style.transform = `translate(${idx * -100 + 'px'})`
+                }, 400)
+            }
+            
+        })
+        function animate() {
+            ulDom.style.transitionDuration = '0.3s'
+            ulDom.style.transform = `translate(${idx * -100 + 'px'})`
+        }
+    </script>
+</body>
+</html>
