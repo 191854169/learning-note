@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .test_class {
+            color: lightpink;
+        }
+    </style>
+</head>
+<body>
+    <div id="myDiv" name="attr节点">
+        文本节点
+        <!-- 注释节点 -->
+        
+        <span id="move_child">MOVE Child</span>
+    </div>
+
+    <script>
+        const fragment = document.createDocumentFragment()
+        // 创建元素节点
+        const span = document.createElement('span')
+        // 创建文本节点
+        const text_root = document.createTextNode('文本片段中的span节点')
+        text_root.appendData('  文本片段中文本节点1')
+        span.appendChild(text_root)
+        // 通过setAttribute来设置特性
+        span.setAttribute('id', 'mySpan')
+        // 通过创建属性节点来为元素节点添加特性
+        const attr = document.createAttribute('class')
+        attr.nodeValue = 'test_class'
+        span.setAttributeNode(attr)
+        // 文档片段添加元素节点
+        fragment.appendChild(span)
+        const myDiv = document.getElementById('myDiv')
+        const moveChild = document.getElementById('move_child')
+        fragment.appendChild(moveChild)
+        myDiv.appendChild(fragment)
+        myDiv.getElementsByClassName('move_child')
+        myDiv.getElementsByTagName('span')
+
+        const NodeList = myDiv.childNodes // DOCUMENT 所允许的所有节点。 包含元素、文本、注释、指令
+        console.log('NodeList======>', NodeList)
+        console.log(NodeList[3].nodeType)
+        const HTMLCollection = myDiv.children // HTML元素节点
+        console.log('HTMLCollection======>', HTMLCollection)
+        // console.log(HTMLCollection[0].attributes)
+    </script>
+</body>
+</html>
