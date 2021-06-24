@@ -9,9 +9,59 @@
         .test_class {
             color: lightpink;
         }
+        .one-line {
+            font-size: 14px;
+            background: lightblue;
+            /** default to 1.3 - 1.5 */
+            /* line-height: 1.3; */
+        }
+        .one-line::after {
+            content: 'x';
+        }
+        .large-height {
+            line-height: 30px;
+            vertical-align: top;
+            background: green;
+        }
+        .larger-height {
+            line-height: 50px;
+            color: lightcoral;
+        }
+        .more-line {
+            font-size: 14px;
+            line-height: 1;
+        }
+        .middle {
+            font-size: 14px;
+            line-height: 1.5;
+            background: lightblue;
+        }
+        .middle span {
+            position: relative;
+            vertical-align: middle;
+        }
+        .middle .font10 {
+            font-size: 10px;
+        }
+        .middle .font14::after, .middle .font10::after {
+            content: '';
+            position: absolute;
+            height: 1px;
+            left: 0;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: red;
+        }
     </style>
 </head>
 <body>
+    <div class="one-line">x吃屎了你！<span class="large-height">高行高x</span><span class="larger-height">更高的行高</span></div>
+    <div class="more-line">吃屎了你！<br>你干啥呢？</div>
+    <div class="middle">
+        <span class="font10">不知道能不能！x</span><span class="font14">能不能居中呢？x</span>
+    </div>
+    <div><span>你想要干啥子呢个</span></div>
     <div id="myDiv" name="attr节点">
         文本节点
         <!-- 注释节点 -->
