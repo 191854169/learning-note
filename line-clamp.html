@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            display: flex;
+        }
+        .text {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .text::before {
+            content: '';
+            float: right;
+            height: calc(100% - 22px);
+            width: 0;
+        }
+        .btn {
+            float: right;
+            color: #20a0ff;
+            clear: both;
+        }
+        .exp {
+            display: none;
+        }
+        .exp:checked + .text {
+            -webkit-line-clamp: 999;
+        }
+        .exp:checked + .text > label::before {
+            content: '收起';
+        }
+        .exp + .text > label::before {
+            content: '展开';
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input type="checkbox" class="exp" id="exp">
+        <div class="text">
+            <label for="exp" class="btn"></label>
+            提到文本环绕效果，一般能想到 浮动 float ，没错千万不要以为浮动已经是过去式了，具体的场景还是很有用的；比如下面放一个按钮，然后设置浮动提到文本环绕效果，一般能想到 浮动 float ，没错千万不要以为浮动已经是过去式了，具体的场景还是很有用的；比如下面放一个按钮，然后设置浮动提到文本环绕效果，一般能想到 浮动 float ，没错千万不要以为浮动已经是过去式了，具体的场景还是很有用的；比如下面放一个按钮，然后设置浮动提到文本环绕效果，一般能想到 浮动 float ，没错千万不要以为浮动已经是过去式了，具体的场景还是很有用的；比如下面放一个按钮，然后设置浮动提到文本环绕效果，一般能想到 浮动 float ，没错千万不要以为浮动已经是过去式了，具体的场景还是很有用的；比如下面放一个按钮，然后设置浮动提到文本环绕效果，一般能想到 浮动 float ，没错千万不要以为浮动已经是过去式了，具体的场景还是很有用的；比如下面放一个按钮，然后设置浮动
+        </div>
+    </div>
+</body>
+</html>

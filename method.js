@@ -7,11 +7,12 @@ function unique(arr) {
 			}
 		)
 	}
-console.log(unique(a));
+console.log(unique(a)); 
 
 
 //第二种：时间复杂度为O(n)
 var a = [1,1,'1','2',1,2];
+
 function unique(arr) {
 	return arr.filter(function(ele, index, array) { 
 		return obj.hasOwnProperty(typeof ele + ele)  ? 

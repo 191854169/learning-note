@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .column-1 div:not(:first-child), .column-2 div:not(:first-child) {
+            margin-top: 10px;
+        }
+        .box-1 {
+            width: 170px;
+            height: 100px;
+            background: lightblue;
+        }
+        .box-2 {
+            width: 170px;
+            height: 150px;
+            background: lightcoral;
+            
+        }
+        .box-3 {
+            width: 170px;
+            height: 70px;
+            background: lightgoldenrodyellow;
+            
+        }
+        .box-4 {
+            width: 170px;
+            height: 80px;
+            background: lightgrey;
+        }
+        .box-5 {
+            width: 170px;
+            height: 90px;
+            background: lightpink;
+        }
+        .box-6 {
+            width: 170px;
+            height: 60px;
+            background: lightslategray;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="column-1">
+            <div class="box-1"></div>
+            <div class="box-2"></div>
+            <div class="box-3"></div>
+        </div>
+        <div class="column-2">
+            <div class="box-4"></div>
+            <div class="box-5"></div>
+            <div class="box-6"></div>
+        </div>
+    </div>
+
+    <button id="test">开始测试</button>
+
+    <script>
+        const testBtn = document.getElementById('test')
+        testBtn.addEventListener('click', function() {
+            setTimeout(() => {
+                copy(334456)
+            }, 1234)
+        })
+        function copy(content) {
+            const el = document.createElement('div')
+            el.innerText = content
+            el.style.position = 'absolute'
+            el.style.top = '0px'
+            el.style.right = '-9999px'
+            document.body.appendChild(el)
+            //创建选中范围
+            const range = document.createRange()
+            range.selectNode(el)
+            //移除剪切板中内容
+            window.getSelection().removeAllRanges()
+            //添加新的内容到剪切板
+            window.getSelection().addRange(range)
+            //复制
+            var res = document.execCommand('copy')
+            el.parentNode.removeChild(el)
+            return res
+        }
+    </script>
+</body>
+</html>

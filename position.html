@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .fixed {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            background: greenyellow;
+            line-height: 100vh;
+        }
+        .relative {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <!-- 有设置position的元素，层级跟随在HTML中出现的顺序 -->
+    <div class="fixed">全屏fixed</div>
+    <div class="relative" id="relative">相对定位</div>
+    <script>
+        const relative = document.getElementById('relative')
+        relative.addEventListener()
+        relative.addEventListener('click', function() {
+            console.log(this)
+        })
+    </script>
+</body>
+</html>
