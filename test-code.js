@@ -129,3 +129,6 @@ console.log(JSON.stringify([]) === "[]")
 
 
 setTimeout(name => console.log(name), 1000, 'chenf')
+
+
+console.log('gg')
