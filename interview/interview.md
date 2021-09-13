@@ -234,7 +234,17 @@ GOOD ARTICLE LINK LIST:
 
     app.listen('8080')
 ```
+### 跨域请求（预检请求OPTIONS）
+浏览器的安全策略，用于保护网站的后台资源安全。会在OPTIONS请求的请求头中带有后续请求会带有请求头字段+请求方法
+- requestHeaders:
+    - access-control-request-headers: xxx,yyy
+    - access-control-request-methods: GET,POST,DELETE,PUT,OPTIONS
+- responseHeaders:
+    - access-control-allow-headers: xxx,yyy (后台设置的请求头)
+    - access-control-allow-methods: GET,POST,DELETE,PUT,OPTIONS
+    - access-control-allow-origin: https://xxx.com
 
+![跨域请求头图片展示!](https://raw.githubusercontent.com/191854169/learning-note/master/cors.png)
 ### 工作里遇到的最困难的事情
 
 
@@ -254,3 +264,15 @@ GOOD ARTICLE LINK LIST:
 5. 在公司的主要职责（PC - 中后台管理系统、移动端 - 内嵌APP的H5页面开发）
 
 ### 主要的职业规划
+
+
+### html、js、css文件加载的关系
+
+html与css会并行解析，分别生成DOM与CSSOM，然后合并成Render Tree，进入Rendering Pipeline；但如果有js，css加载会阻塞后面js语句的执行，而（同步）js脚本执行会阻塞其后的DOM解析（所以通常会把css放在头部，js放在body尾）
+
+
+### script标签与HTML页面解析之间的关系
+![script的异步加载](https://raw.githubusercontent.com/191854169/learning-note/master/script-load-rule.png)
+1. defer 加载｜未加载完 都会等待页面的解析之后按顺序执行，会在DOMContentLoaded之前执行
+
+2. async 加载完之后就会执行代码，会阻塞页面的解析。执行顺序看加载进度的先后。 DOMContentLoad事件可能会在前或后执行，load一定会其之前执行
