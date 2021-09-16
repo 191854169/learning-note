@@ -174,7 +174,7 @@ promise+是一个协议，是解决嵌套式回调的一种方案
 3. 如何避免/减少重绘｜回流的发生
     - 尽可能精确的在dom上进行修改
     - 将修改的属性通过一次性修改style｜增/删class的方式
-    - 将一些会引起大量重绘｜回流的操作放在absolute｜fixed元素上
+    - 脱离文档流进行一系列操作：将一些会引起大量重绘｜回流的操作放在absolute｜fixed元素上
     - 避免使用css表达式（例如：<span style="color: orange;">calc()</span>)
     - 通过Document Fragment来操作dom，最后插入dom
     - 缓存通过js方法获取的css属性
@@ -276,3 +276,24 @@ html与css会并行解析，分别生成DOM与CSSOM，然后合并成Render Tree
 1. defer 加载｜未加载完 都会等待页面的解析之后按顺序执行，会在DOMContentLoaded之前执行
 
 2. async 加载完之后就会执行代码，会阻塞页面的解析。执行顺序看加载进度的先后。 DOMContentLoad事件可能会在前或后执行，load一定会其之前执行
+
+### VUE响应式处理
+
+1. 对象会遍历其属性，通过defineProperty设置set和get同时Dep对象来收集使用依赖，在属性更新的时候同时Dep内的依赖者更新。
+2. 数组会重写可以修改数组元素内容和顺序的方法，在调用的时候通过数组的__ob__内部的Dep来通知依赖者更新。
+
+
+### 精度丢失问题
+[文章解释](https://github.com/camsong/blog/issues/9)
+
+小数保存的方式是通过科学技术法+
+因为以64位二进制长度来保存数字。这里有符号位1，exponent指数位11，尾数52。当小数转化为二进制的时候就会出现尾数不足的时候，此时会通过进1舍0的方式来保存数据，此时就会出现精度丢失问题。
+
+### 面经
+[死磕 36 个 JS 手写题（搞懂后，提升真的大）](https://juejin.cn/post/6946022649768181774 )
+[从一道让我失眠的 Promise 面试题开始，深入分析 Promise 实现细节](https://juejin.cn/post/6945319439772434469)
+[前端面经 - 看这篇就够了（帮你拿到大厂offer）](https://juejin.cn/post/6948227795059212318)
+[当面试官问Webpack的时候他想知道什么](https://juejin.cn/post/6943468761575849992)
+[探索 Snabbdom 模块系统原理（vue vnode-diff算法思想研究）](https://juejin.cn/post/6941009454376681479)
+[17K star 仓库，解决 90% 的大厂基础面试题](https://juejin.cn/post/6947860760840110088)
+
