@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <input type="file" id="openTextFile" />
+        <button id="openText">打开text</button>
+        <script>
+            const openTextBtn = document.getElementById('openText');
+            const openTextFileBtn = document.getElementById('openTextFile');
+            openTextBtn.addEventListener('clik', () => {
+                alert('openText');
+            });
+            openTextFileBtn.addEventListener('change', (e) => {
+                console.log('ee ===>', e.target.files);
+                const file = e.target.files[0];
+                const blobFile = new Blob([file], {
+                    type: 'text/plain;charset=utf-8'
+                });
+
+                blobFile.text().then((d) => {
+                    console.log('d ==>', d);
+                    const newBlob = new Blob([d], {
+                        type: 'text/plain;charset=utf-8'
+                    });
+                    const url = URL.createObjectURL(newBlob);
+                    window.open(url, '_blank', { name: '干啥呢？' });
+                });
+                // const url = URL.createObjectURL(blobFile);
+
+                // var newUrl =
+                //     'data:text/html;charset=utf-8,' +
+                //     encodeURI(url).replace(/#/g, '%23');
+                // window.open(newUrl);
+                // // window.open(url, '_blank');
+                // window.open(newUrl, '_blank');
+            });
+        </script>
+    </body>
+</html>

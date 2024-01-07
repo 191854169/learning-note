@@ -73,13 +73,35 @@ fs.readFile('./xss.js', (err, data) => {
 // Promise.resolve().then(() => {
 //     console.log('promise3')
 // })
-setTimeout(()=>{
-    console.log('timer2')
-    Promise.resolve().then(function() {
-        console.log('promise2')
-    })
-}, 0)
+// setTimeout(()=>{
+//     console.log('timer2')
+//     Promise.resolve().then(function() {
+//         console.log('promise2')
+//     })
+// }, 0)
 
-setImmediate(name => {
-    console.log('immediate ' + name)
-}, 'chenf')
+// setImmediate(name => {
+//     console.log('immediate ' + name)
+// }, 'chenf')
+
+Promise.resolve().then(() => {
+    console.log(0);
+    return Promise.resolve(4);
+}).then((res) => {
+    console.log(res)
+})
+
+Promise.resolve().then(() => {
+    console.log(1);
+}).then(() => {
+    console.log(2);
+}).then(() => {
+    console.log(3);
+}).then(() => {
+    console.log(5);
+}).then(() =>{
+    console.log(6);
+})
+
+// 大家先思考一下
+

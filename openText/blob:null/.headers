@@ -1,0 +1,11 @@
+[
+  {
+    "applyTo": "0bc8c44c-532f-44db-ba38-c728cba12774",
+    "headers": [
+      {
+        "name": "content-type",
+        "value": "text/plain;charset=utf-8"
+      }
+    ]
+  }
+]

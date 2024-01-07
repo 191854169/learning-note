@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ViewUI example</title>
+    <link rel="stylesheet" type="text/css" href="http://unpkg.com/view-design/dist/styles/iview.css">
+    <!-- <script type="text/javascript" src="http://vuejs.org/js/vue.min.js"></script> -->
+    <!-- <script type="text/javascript" src="http://unpkg.com/view-design/dist/iview.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
+    <script src="./viewDesign.js"></script>
+</head>
+<body>
+<div id="app">
+    <i-button @click="show">Click me!</i-button>
+    <Modal v-model="visible" title="Welcome">Welcome to ViewUI</Modal>
+    <date-picker></date-picker>
+    <i-form :model="form" :rules="rules">
+        <form-item prop="time" label="时间">
+            <date-picker v-model="form.time" @on-change="onDateChange"></date-picker>
+        </form-item>
+    </i-form>
+</div>
+<div id="app1"></div>
+<script>
+    const comp = {
+        data() {
+            return {
+                isShow: true
+            }
+        },
+        mounted() {
+            document.getElementById('test').dataset.a = 1
+            this.$nextTick(() => {
+            })
+        },
+        updated() {
+            alert(1)
+        },
+        render(h) {
+            return h('div', { attrs: { name: 'test' }, key: Date.now() }, [
+                h('span', { attrs: { id: 'test' } }, 'TEST'),
+                h('button', { on: { click: () => { this.isShow = !this.isShow; console.log(this.isShow) } } }, 'switch'),
+                this.isShow ? h('span', { key: Date.now() }, 'SHOW') :''
+            ])
+        }
+    }
+    const app1 = new Vue({
+        el: '#app1',
+        render(h) {
+            return h(
+                'div', 
+                ['3333', h(comp)]
+            )
+        }
+    })
+    new Vue({
+        el: '#app',
+        data: {
+            visible: false,
+            form: {
+                time: ''
+            },
+            rules: {
+                time: [
+                    // {
+                    //     type: 'date',
+                    //     required: true,
+                    //     message: '测试不能通过',
+                    //     trigger: 'change'
+                    // },
+                    {
+                        required: true,
+                        transform: function(v) {
+                            if (v instanceof Date) return v.toString()
+                            return v
+                        },
+                        // validator: function(rule, value, callback) {
+                        //     console.log('value ==> ', value)
+                        //     callback('')
+                        // },
+                        message: '不能为空',
+                        trigger: 'change'
+                    }
+                ]
+            }
+        },
+        methods: {
+            show: function () {
+                this.visible = true;
+            },
+
+            onDateChange(v) {
+                console.log(this.form)
+                this.form.time = v
+            }
+        }
+    })
+  </script>
+</body>
+</html>

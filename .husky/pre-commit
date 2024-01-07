@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+# Problem in MAC: The '.husky/pre-commit' hook was ignored because it's not set as executable. 
+# solved: link: https://github.com/typicode/husky/issues/1177
+yarn precommit

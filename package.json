@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/191854169/learning-note#readme",
   "dependencies": {
+    "async-validator": "^4.0.7",
     "browserify": "^17.0.0",
     "vue": "^2.5.17-beta.0"
   }

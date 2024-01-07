@@ -14,3 +14,8 @@
 
 const net = require('net')
 console.log(net)
+console.log('process======>', process.execArgv, process.argv)
+const domain = (process.argv.filter(item => /domain=.*/.test(item))[0] || '').match(/domain=(.+)/)[1]
+console.log('domain======>', domain)
+
+
